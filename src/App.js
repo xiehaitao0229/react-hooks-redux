@@ -14,7 +14,13 @@ const {
 //  action
 function actionAdd(){
   return {
-    type:'add'
+    type:'add',
+    reducer(state){  //  在action里面操作reducer
+      return {
+        ...state,
+        age:state.age+1
+      }
+    }
   }
 }
 
