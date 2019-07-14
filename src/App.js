@@ -7,8 +7,9 @@ const {
 } = createStore({
   initialState: {
     name: 'xht',
-    age: 18
-  }
+    age: 18,
+  },
+  isDev:true
 })
 
 function timeOutAdd(a) {
