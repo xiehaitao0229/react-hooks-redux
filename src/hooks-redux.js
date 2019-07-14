@@ -54,8 +54,14 @@ export default function createStore(params) {
         const [state, dispatch] = useReducer(middlewareReducer, initialState);
         if (!store.dispatch) {
             store.dispatch = async (action) => {
-                dispatch(action)
-            }
+                //  异步的时候
+                if (typeof action === 'function') {
+                    await action(dispatch, store.getState())
+                } else {
+                    //  同步的时候
+                    dispatch(action)
+                }
+            } 
         }
 
         return <AppContext.Provider {...props} value={state} />
